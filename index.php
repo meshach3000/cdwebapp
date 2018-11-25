@@ -1,6 +1,6 @@
 <!doctype html>
 <?php 
-  include('include/menu.php');
+  include('include/cwFunctions.php');
 ?>
 <html lang="en">
   <head>
