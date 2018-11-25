@@ -59,7 +59,7 @@
                             <div class="price_table_row">Free Backup</div>
                             <div class="price_table_row">Full Time Support</div>                                                
                         </div>
-                        <a href="#" class="btn btn-warning btn-lg btn-block">Sign Up</a>
+                        <a href="reg.php" class="btn btn-warning btn-lg btn-block">Sign Up</a>
                     </div>
                 </div>
         
@@ -76,7 +76,7 @@
                             <div class="price_table_row">Free Backup</div>
                             <div class="price_table_row">Full Time Support</div>                                                
                         </div>
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Sign Up</a>
+                        <a href="reg.php" class="btn btn-primary btn-lg btn-block">Sign Up</a>
                     </div>
                 </div>
         
@@ -92,7 +92,7 @@
                             <div class="price_table_row">Free Backup</div>
                             <div class="price_table_row">Full Time Support</div>                                                
                         </div>
-                        <a href="#" class="btn btn-success btn-lg btn-block">Sign Up</a>
+                        <a href="reg.php" class="btn btn-success btn-lg btn-block">Sign Up</a>
                     </div>
                 </div>
         
@@ -108,7 +108,7 @@
                             <div class="price_table_row">Free Backup</div>
                             <div class="price_table_row">Full Time Support</div>                                                
                         </div>
-                        <a href="#" class="btn btn-info btn-lg btn-block">Sign Up</a>
+                        <a href="reg.php" class="btn btn-info btn-lg btn-block">Sign Up</a>
                     </div>
                 </div>
             </div>

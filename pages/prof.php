@@ -1,5 +1,15 @@
 <?php
     include('../include/cwFunctions.php');
+
+    session_start();
+    
+    if($_SESSION["auth"] != null && $_SESSION['auth'] == true){
+        getUserDetails($_SESSION['useId']);
+    }
+    else{
+         header('Location:login.php');
+    }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -77,23 +87,23 @@
 		            </div>
 		            <div class="row">
 		                <div class="col-md-12">
-		                    <form>
+		                    <form method="post" action="">
                               <div class="form-group row text-left">
-                                <label for="username" class="col-4 col-form-label">User Name</label> 
+                                <label for="useUsername" class="col-4 col-form-label">User Name</label> 
                                 <div class="col-8">
-                                  <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                  <input id="useUsername" name="useUsername" class="form-control here" required="required" type="text" value="<?php echo $useUsername; ?>">
                                 </div>
                               </div>
                               <div class="form-group row text-left">
-                                <label for="name" class="col-4 col-form-label">First Name</label> 
+                                <label for="useFirstname" class="col-4 col-form-label">First Name</label> 
                                 <div class="col-8">
-                                  <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
+                                  <input id="useFirstname" name="useFirstname" placeholder="" class="form-control here" type="text" value="<?php echo $useFirstname; ?>">
                                 </div>
                               </div>
                               <div class="form-group row text-left">
-                                <label for="lastname" class="col-4 col-form-label">Last Name</label> 
+                                <label for="useLastname" class="col-4 col-form-label">Last Name</label> 
                                 <div class="col-8">
-                                  <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
+                                  <input id="useLastname" name="useLastname" placeholder="" class="form-control here" type="text" value="<?php echo $useLastname; ?>">
                                 </div>
                               </div>
                               <!--<div class="form-group row text-left">
@@ -105,23 +115,11 @@
                                 </div>
                               </div> -->
                               <div class="form-group row text-left">
-                                <label for="email" class="col-4 col-form-label">Email*</label> 
+                                <label for="useEmail" class="col-4 col-form-label">Email</label> 
                                 <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                                  <input id="useEmail" name="useEmail" placeholder="" class="form-control here" required="required" type="email" value="<?php echo $useEmail?>" >
                                 </div>
                               </div>
-                              <div class="form-group row text-left">
-                                <label for="website" class="col-4 col-form-label">Website</label> 
-                                <div class="col-8">
-                                  <input id="website" name="website" placeholder="website" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row text-left">
-                                <label for="newpass" class="col-4 col-form-label">New Password</label> 
-                                <div class="col-8">
-                                  <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
-                                </div>
-                              </div> 
                               <div class="form-group row text-left">
                                 <div class="offset-4 col-8">
                                   <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>

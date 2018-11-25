@@ -31,7 +31,8 @@
             </button>
       </div>
       <?php
-			  printMenu();
+        printMenu();
+        dbConnection();
 	    ?> 
   </div>
 </nav>
@@ -93,20 +94,14 @@
         </div>
 		<div class="row">
 				<div class="col">
-					<button id="getStarted" class="btn btn-primary btn-lg">Get Started</button>
+          <a href="pages/reg.php">
+				  	<button id="getStarted" class="btn btn-primary btn-lg">Get Started</button>
+          </a>
 				</div>
-        </div>
+    </div>
     </div>
   </div>
 </div>
-
-<script>
-	$(document).ready(function(){
-		$("getStarted").click(function(){
-			alert("Hello");
-		});
-	});
-</script>
 <!--   Core JS Files   -->
 <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
@@ -121,5 +116,6 @@
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
-<script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script></body>
+<script src="assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
+</body>
 </html>

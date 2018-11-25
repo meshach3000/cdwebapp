@@ -1,4 +1,7 @@
 <?php
+$useEmail= $useFirstname = $useLastname = $useUsername ="";
+
+
     function printStyle(){
       echo(' <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -72,5 +75,121 @@
                 </li>
               </ul>
           </div>');
+    }
+
+    function dbConnection(){
+        try{
+               $conn = new mysqli('localhost', 'admin', 'admin', 'clouddb',3306);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                } 
+        }
+        catch(Exception $e){
+            echo $e;
+        }
+
+    }
+
+    function console_log(){
+         echo '<script>';
+         echo 'console.log('.json_encode($data) .')';
+         echo '<script>';
+    }
+
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+
+    function createUser($useUsername, $useFirstname,$useLastname,$usePassword,$useEmail){
+
+        try{
+                $conn = new mysqli('localhost', 'admin', 'admin', 'clouddb',3306);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                } 
+        }
+        catch(Exception $e){
+            echo $e;
+        }
+
+        $date = date_create();
+        $dateTime = date_format($date, 'Y-m-d H:i:s');
+
+        $sql = "INSERT INTO users (use_username, use_firstname,use_lastname,use_password,use_email,use_created)
+                VALUES ('$useUsername','$useFirstname', '$useLastname','$usePassword','$useEmail', '$dateTime' )";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+            header("login.php");
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+    }
+    
+    function getUserDetails($useId){
+        try{
+            $conn = new mysqli('localhost', 'admin', 'admin', 'clouddb',3306);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } 
+        }catch(Exception $e){
+          echo $e;
+        }
+
+        $sql = "SELECT use_username,use_firstname,use_lastname, use_email, use_password FROM users where use_id=$useId";
+        $result = $conn->query($sql);
+        $useId = 0;
+
+             if ($result->num_rows > 0) {
+                // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        $GLOBALS['useEmail'] = $row['use_email'];
+                        $GLOBALS['useFirstname'] = $row['use_firstname'];
+                        $GLOBALS['useLastname'] = $row['use_lastname'];
+                        $GLOBALS['useUsername'] = $row['use_username'];
+                    }
+       
+                }
+  }
+
+    function login($useEmail,$usePassword){
+        try{
+            $conn = new mysqli('localhost', 'admin', 'admin', 'clouddb',3306);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } 
+        }catch(Exception $e){
+          echo $e;
+        }
+
+        $sql = "SELECT use_id, use_email, use_password FROM users where use_email like '$useEmail' and use_password like '$usePassword'";
+        $result = $conn->query($sql);
+        $useId = 0;
+
+             if ($result->num_rows > 0) {
+                // output data of each row
+                 while($row = $result->fetch_assoc()) {
+                     echo "Name: " . $row["use_email"]. " " . $row["use_password"]. "<br>";
+                     $useId = $row["use_id"];
+                 }
+                 session_start();
+                 $_SESSION["auth"] = true;
+                 $_SESSION["useId"] = $useId;
+                 header('Location:prof.php');
+            } 
+            else {
+                    echo "0 results";
+                   // header('Location:reg.php');
+            }
+            $conn->close();
     }
 ?>

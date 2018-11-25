@@ -34,6 +34,17 @@
       <?php
         printMenuFromPages();
       ?>
+      <?php
+          $useEmail = $usePassword ="";
+
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                  $useEmail = test_input($_POST["useEmail"]);
+                  $usePassword = test_input($_POST["usePassword"]);
+
+                  login($useEmail,$usePassword);
+          }
+         
+      ?>
   </div>
 </nav>
   <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('../assets/img/bg9.jpg')">
@@ -41,7 +52,7 @@
       <div class="row">
           <div class="col-lg-4 col-md-6 ml-auto mr-auto" style="padding-top: 160px;">
           <div class="card card-login">
-            <form class="form" method="" action="">
+            <form class="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
               <div class="card-header card-header-primary text-center">
                 <h4 class="card-title">Login</h4>
               </div>
@@ -53,7 +64,7 @@
                       <i class="material-icons">mail</i>
                     </span>
                   </div>
-                  <input type="email" class="form-control" placeholder="Email...">
+                  <input type="email" id="useEmail" name="useEmail" class="form-control" placeholder="Email..." required>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -61,16 +72,18 @@
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password...">
+                  <input type="password" id="usePassword" name="usePassword"  class="form-control" placeholder="Password...">
                 </div>
                 <div class="row">
                   <div class="col text-center">
-                    <button id="register" type="button" class="btn btn-link text-center">Register</button>
+                    <a href="reg.php">
+                      <button id="register" type="button" class="btn btn-link text-center">Register</button>
+                    </a>
                   </div>
                 </div>
               </div>
               <div class="footer text-center">
-                <a href="#pablo" class="btn btn-primary btn-lg">login</a>
+                <button class="btn btn-primary btn-lg" type="submit" >login</button>
               </div>
             </form>
           </div>
