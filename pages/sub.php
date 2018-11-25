@@ -49,32 +49,35 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">        
                     <div class="price_table_container">
-                        <div class="price_table_heading">Starter</div>
+                        <div class="price_table_heading">Fremium</div>
                         <div class="price_table_body">
-                            <div class="price_table_row cost warning-bg"><strong>$ 19</strong><span>/MONTH</span></div>
-                            <div class="price_table_row">1 Website</div>
-                            <div class="price_table_row">10 GB Storage</div>
-                            <div class="price_table_row">10 GB Bandwidth</div>
-                            <div class="price_table_row">10 Email Addresses</div>
-                            <div class="price_table_row">Free Backup</div>
-                            <div class="price_table_row">Full Time Support</div>                                                
+                            <div class="price_table_row cost warning-bg"><strong>$0</strong><span>/MONTH</span></div>
+                            <div class="price_table_row">10 Sensor Limit</div>
+                            <div class="price_table_row">Maximum of    100,000 requests</div>
+                            <div class="price_table_row">Request warning(90%)</div>
+                            <div class="price_table_row">Pre-existing algorithms only(not editable)</div>
+                            <div class="price_table_row">Data will be in .csv</div>
+                            <div class="price_table_row">Data table(value vs time)</div>
+							<div class="price_table_row">No Report Feature & Alarm Conditions</div>
+							<div class="price_table_row">Upgrade package anytime</div>
                         </div>
                         <a href="reg.php" class="btn btn-warning btn-lg btn-block">Sign Up</a>
                     </div>
                 </div>
         
-                <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">
-                    <div class="recommended"><strong><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> RECOMMENDED</strong></div>                              
+                <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">                            
                     <div class="price_table_container">
                         <div class="price_table_heading">Basic</div>
                         <div class="price_table_body">
-                            <div class="price_table_row cost primary-bg"><strong>$ 29</strong><span>/MONTH</span></div>
-                            <div class="price_table_row">10 Websites</div>
-                            <div class="price_table_row">100 GB Storage</div>
-                            <div class="price_table_row">100 GB Bandwidth</div>
-                            <div class="price_table_row">50 Email Addresses</div>
-                            <div class="price_table_row">Free Backup</div>
-                            <div class="price_table_row">Full Time Support</div>                                                
+                            <div class="price_table_row cost primary-bg"><strong>$187.63</strong><span>/MONTH</span></div>
+                            <div class="price_table_row">50 Sensor Limit</div>
+                            <div class="price_table_row">Maximum of    3,750,000 requests</div>
+                            <div class="price_table_row">Request warning(90%)</div>
+                            <div class="price_table_row">Pre-existing algorithms only(not editable)</div>
+                            <div class="price_table_row">Data will be in .csv or .txt</div>
+                            <div class="price_table_row">Data table(value vs time)</div>
+							<div class="price_table_row">Report Feature & Alarm Conditions</div>
+							<div class="price_table_row">Payment via PayPal</div>
                         </div>
                         <a href="reg.php" class="btn btn-primary btn-lg btn-block">Sign Up</a>
                     </div>
@@ -84,13 +87,15 @@
                     <div class="price_table_container">
                         <div class="price_table_heading">Premium</div>
                         <div class="price_table_body">
-                            <div class="price_table_row cost success-bg"><strong>$ 39</strong><span>/MONTH</span></div>
-                            <div class="price_table_row">100 Websites</div>
-                            <div class="price_table_row">1 TB Storage</div>
-                            <div class="price_table_row">1 TB Bandwidth</div>
-                            <div class="price_table_row">100 Email Addresses</div>
-                            <div class="price_table_row">Free Backup</div>
-                            <div class="price_table_row">Full Time Support</div>                                                
+                            <div class="price_table_row cost success-bg"><strong>$300.25</strong><span>/MONTH</span></div>
+                            <div class="price_table_row">100 Sensor Limit</div>
+                            <div class="price_table_row">Maximum 12,000,000 requests</div>
+                            <div class="price_table_row">Request warning(90%)</div>
+                            <div class="price_table_row">Pre-existing & user configurable algorithms</div>
+                            <div class="price_table_row">Data will be in .csv or .txt</div>
+                            <div class="price_table_row">Data table(value vs time)</div>
+							<div class="price_table_row">Report Feature & Alarm Conditions</div>
+							<div class="price_table_row">Payment via PayPal</div>                                               
                         </div>
                         <a href="reg.php" class="btn btn-success btn-lg btn-block">Sign Up</a>
                     </div>
@@ -98,15 +103,17 @@
         
                 <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">        
                     <div class="price_table_container">
-                        <div class="price_table_heading">Master</div>
+                        <div class="price_table_heading">Enterprise</div>
                         <div class="price_table_body">
-                            <div class="price_table_row cost info-bg"><strong>$ 60</strong><span>/MONTH</span></div>
-                            <div class="price_table_row">Unlimited Websites</div>
-                            <div class="price_table_row">10 TB Storage</div>
-                            <div class="price_table_row">100 TB Bandwidth</div>
-                            <div class="price_table_row">1000 Email Addresses</div>
-                            <div class="price_table_row">Free Backup</div>
-                            <div class="price_table_row">Full Time Support</div>                                                
+                            <div class="price_table_row cost info-bg"><strong>$5000</strong><span>/MONTH</span></div>
+                            <div class="price_table_row">1,000,000 Sensor Limit</div>
+                            <div class="price_table_row">Maximum of 1,000,000,000,000 requests</div>
+                            <div class="price_table_row">Request warning(90%)</div>
+                            <div class="price_table_row">Pre-existing & user configurable algorithms</div>
+                            <div class="price_table_row">Data will be in .csv or .txt</div>
+                            <div class="price_table_row">Data table(value vs time)</div>
+							<div class="price_table_row">Report Feature & Alarm Conditions</div>
+							<div class="price_table_row">Payment via PayPal</div>                                                 
                         </div>
                         <a href="reg.php" class="btn btn-info btn-lg btn-block">Sign Up</a>
                     </div>
@@ -122,24 +129,6 @@
 </div>
 
 <footer class="footer footer-default" >
-  <div class="container">
-    <nav class="float-left">
-      <ul>
-        <li>
-          <a href="https://www.creative-tim.com/">
-              Creative Tim
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="copyright float-right">
-        &copy;
-        <script>
-            document.write(new Date().getFullYear())
-        </script>, made with <i class="material-icons">favorite</i> by
-        <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for a better web.
-    </div>
-  </div>
 </footer>
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
