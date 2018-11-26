@@ -14,7 +14,6 @@
   <div class="container">
       <div class="navbar-translate">
       <a class="navbar-brand" href="../index.php" >Cloud Diagnostics Service</a>
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
@@ -34,7 +33,7 @@
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto">
         <div class="brand text-center">
-          <h1>Subscriptions</h1>
+          <h1>Subscription</h1>
           <h3 class="title text-center">Select a package to begin</h3>
         </div>
       </div>
@@ -145,4 +144,6 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script></body>
+
+
 </html>
