@@ -1,0 +1,127 @@
+
+Resources:
+  AppNode:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0ac019f4fcb7cb7e6
+      KeyName: CloudSensor
+      SecurityGroups:
+        - !Ref AppNodeSG
+      UserData: !Base64 |
+        #!/bin/bash
+        sudo apt-get update -qq
+        sudo apt-get install -y apt-transport-https ca-certificates
+        sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+        sudo echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | tee /etc/apt/sources.list.d/docker.list
+        sudo apt-get update -qq
+        sudo apt-get purge lxc-docker || true
+        sudo apt-get -y install linux-image-extra-$(uname -r) linux-image-extra-virtual
+        sudo apt-get -y install docker-engine
+        sudo usermod -aG docker ubuntu
+        sudo mkdir -p /etc/systemd/system/docker.service.d
+        sudo printf "[Service]\nExecStart=\nExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375\n" >>  /etc/systemd/system/docker.service.d/docker.conf
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+  AppNodeSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: for the app nodes that allow ssh, http and docker ports
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '2375'
+        ToPort: '2375'
+        CidrIp: 0.0.0.0/0
+  Autoscalegroup:
+   Type: AWS::AutoScaling::AutoScalingGroup
+   Properties:
+     AutoScalingGroupName: CloudSensorEC2AutoScale-test
+     AvailabilityZones:
+       - us-east-1b
+     Cooldown: 300
+     DesiredCapacity: 1
+     HealthCheckGracePeriod: 300
+     HealthCheckType: EC2
+     LaunchTemplate: 
+       LaunchTemplateName: CloudSensorEC2template
+       Version: 1
+     MaxSize: 10
+     MinSize: 1
+     NotificationConfigurations:
+       - NotificationTypes:
+           - 'autoscaling:EC2_INSTANCE_LAUNCH'
+           - 'autoscaling:EC2_INSTANCE_LAUNCH_ERROR'
+           - 'autoscaling:EC2_INSTANCE_TERMINATE'
+           - 'autoscaling:EC2_INSTANCE_TERMINATE_ERROR'
+         TopicARN: 
+           arn:aws:sns:us-east-1:764656285471:CloudSensorEC2SNS
+     ServiceLinkedRoleARN: arn:aws:iam::764656285471:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling
+     TerminationPolicies:
+       - Default
+     VPCZoneIdentifier:
+       - subnet-fcc249d2
+  DatabaseInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBName: "CloudSensor"
+      Engine: MySQL
+      MasterUsername: cloudsensor
+      MasterUserPassword: password123
+      DBInstanceClass: db.t2.micro
+      AllocatedStorage: '5'
+      DBSecurityGroups:
+        - !Ref DatabaseSG
+  DatabaseSG:
+    Type: AWS::RDS::DBSecurityGroup
+    Properties:
+      GroupDescription: Security Group for RDS public access
+      DBSecurityGroupIngress:
+        - CIDRIP: 0.0.0.0/0
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Id: MyPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join 
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3Bucket
+                - /*
+      Bucket: !Ref S3Bucket
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt 
+      - S3Bucket
+      - WebsiteURL
+    Description: URL for website hosted on S3
+  S3BucketSecureURL:
+    Value: !Join 
+      - ''
+      - - 'https://'
+        - !GetAtt 
+          - S3Bucket
+          - DomainName
+    Description: Name of S3 bucket to hold website content
+

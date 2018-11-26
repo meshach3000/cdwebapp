@@ -1,0 +1,13 @@
+Read Me - Create resources with CloudFormation stack
+
+1. Login to AWS account (if there is no account then signup for a free account)
+2. Find YAML file "CloudSensorfullstackandAutoScale3.yml"
+3. Open YAML file and verify the resources to be created as EC2, Security Groups, Autoscale Group, RDS Database, S3 Bucket
+4. Go to AWS CloudFormation console
+5. Click on "Create Stack"
+6. Select "Upload a template to Amazon S3" in the "Choose a template" options
+7. Click "Browse" and find the the YAML file "CloudSensorfullstackandAutoScale3.yml"
+8. Upload file to create new stack
+9. Verify resources created as EC2, Security Groups, Autoscale Group, RDS Database, S3 Bucket
+10. Identify the EC2 instance created and record the IP address
+11. Identify the RDS instance created and record the access point and place it in the "app.yml" file
